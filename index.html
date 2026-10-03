@@ -1,10 +1,568 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PremKashyapOG</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PremKashyapOG | Official Website</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: white;
+    background: #050510;
+    overflow-x: hidden;
+}
+
+/* Animated background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(45deg, #7c3aed, #06b6d4, #ec4899);
+    filter: blur(150px);
+    opacity: .25;
+    top: -200px;
+    left: -200px;
+    animation: move 8s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: #2563eb;
+    filter: blur(150px);
+    opacity: .18;
+    bottom: -200px;
+    right: -150px;
+    animation: move2 10s infinite alternate ease-in-out;
+    z-index: -1;
+}
+
+@keyframes move {
+    from { transform: translate(0,0); }
+    to { transform: translate(250px,180px); }
+}
+
+@keyframes move2 {
+    from { transform: translate(0,0); }
+    to { transform: translate(-200px,-150px); }
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5,5,16,.7);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    background: linear-gradient(90deg,#8b5cf6,#06b6d4,#ec4899);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-left: 22px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #8b5cf6;
+}
+
+/* Hero */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px 50px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid rgba(139,92,246,.5);
+    border-radius: 30px;
+    background: rgba(139,92,246,.1);
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    50% { box-shadow: 0 0 25px rgba(139,92,246,.4); }
+}
+
+h1 {
+    font-size: clamp(50px, 10vw, 100px);
+    line-height: 1;
+    background: linear-gradient(90deg,#8b5cf6,#06b6d4,#ec4899,#8b5cf6);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradient 5s linear infinite;
+}
+
+@keyframes gradient {
+    to { background-position: 300%; }
+}
+
+.hero p {
+    margin: 25px auto;
+    color: #b7b7c7;
+    font-size: 18px;
+    max-width: 650px;
+    line-height: 1.7;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    margin: 8px;
+    background: linear-gradient(90deg,#7c3aed,#2563eb);
+    transition: .3s;
+    box-shadow: 0 0 25px rgba(124,58,237,.25);
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+/* Sections */
+section {
+    padding: 90px 8%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title span {
+    background: linear-gradient(90deg,#8b5cf6,#06b6d4);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* About */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.card {
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(12px);
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(139,92,246,.5);
+    box-shadow: 0 15px 50px rgba(0,0,0,.3);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 23px;
+}
+
+.card p {
+    color: #bcbcc8;
+    line-height: 1.8;
+}
+
+/* Projects */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.project {
+    padding: 28px;
+    min-height: 220px;
+}
+
+.project-icon {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.project h3 {
+    margin-bottom: 12px;
+}
+
+/* Skills */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.skill {
+    padding: 12px 18px;
+    border-radius: 30px;
+    background: rgba(139,92,246,.1);
+    border: 1px solid rgba(139,92,246,.3);
+    transition: .3s;
+}
+
+.skill:hover {
+    transform: scale(1.08);
+    background: rgba(139,92,246,.2);
+}
+
+/* Timeline */
+.timeline {
+    max-width: 750px;
+    margin: auto;
+}
+
+.timeline-item {
+    border-left: 2px solid #8b5cf6;
+    padding: 0 0 35px 30px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: #8b5cf6;
+    border-radius: 50%;
+    position: absolute;
+    left: -7px;
+    top: 5px;
+    box-shadow: 0 0 15px #8b5cf6;
+}
+
+.timeline-item h3 {
+    margin-bottom: 8px;
+}
+
+.timeline-item p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+/* Quote */
+.quote {
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.5;
+    padding: 50px 20px;
+}
+
+.quote span {
+    color: #8b5cf6;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    color: #777;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.social {
+    margin-bottom: 15px;
+}
+
+.social a {
+    color: #bbb;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social a:hover {
+    color: #8b5cf6;
+}
+
+/* Mobile */
+@media(max-width:800px) {
+    nav a {
+        display: none;
+    }
+
+    .about,
+    .projects {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 70px 6%;
+    }
+
+    .section-title {
+        font-size: 32px;
+    }
+}
+</style>
 </head>
+
 <body>
-    <h1>Welcome to PremKashyapOG 👋</h1>
-    <p>My official website.</p>
+
+<nav>
+    <div class="logo">PremKashyapOG</div>
+
+    <div>
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-content">
+
+        <div class="badge">✦ Welcome to my official website</div>
+
+        <h1>Prem<br>Kashyap</h1>
+
+        <p>
+            Student • Creator • Minecraft Server Developer •
+            Entrepreneur in Progress
+        </p>
+
+        <p>
+            I'm Prem, also known online as <b>NotPremOG</b>.
+            I'm building my skills, projects and future one step at a time.
+        </p>
+
+        <a class="btn" href="#about">Explore My Journey</a>
+        <a class="btn" href="#projects">My Projects</a>
+
+    </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+
+    <h2 class="section-title">
+        About <span>Me</span>
+    </h2>
+
+    <div class="about">
+
+        <div class="card">
+            <h3>👋 Who Am I?</h3>
+
+            <p>
+                I'm Prem Kashyap, a Class 11 Commerce student
+                who is interested in technology, content creation,
+                Minecraft servers and online entrepreneurship.
+            </p>
+
+            <br>
+
+            <p>
+                I use the name <b>NotPremOG</b> for many of my
+                online projects and communities.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🚀 My Mindset</h3>
+
+            <p>
+                I'm currently focused on improving myself slowly —
+                building discipline, learning useful skills and
+                creating projects instead of waiting for the
+                perfect moment.
+            </p>
+
+            <br>
+
+            <p>
+                My goal is simple: keep learning, keep creating
+                and build something I'm proud of.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+
+    <h2 class="section-title">
+        My <span>Journey</span>
+    </h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <h3>🎓 Class 11 — Commerce</h3>
+            <p>
+                Continuing my studies while exploring technology,
+                creativity and online opportunities.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>💻 Exploring Online Work</h3>
+            <p>
+                Started learning about content creation, websites,
+                digital tools and ways to build projects online.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>🎮 Minecraft Projects</h3>
+            <p>
+                Worked on Minecraft server projects, communities,
+                server management, plugins and Discord systems.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>🎬 Content Creation</h3>
+            <p>
+                Exploring YouTube and short-form content with a
+                focus on motivation and self-improvement.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>🌱 The New Journey</h3>
+            <p>
+                Slowly improving my discipline, skills and mindset
+                while building my own identity online.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+
+    <h2 class="section-title">
+        My <span>Projects</span>
+    </h2>
+
+    <div class="projects">
+
+        <div class="card project">
+            <div class="project-icon">🎮</div>
+            <h3>Valora MC</h3>
+            <p>
+                A Minecraft economy server project with
+                custom systems, ranks, shops and community features.
+            </p>
+        </div>
+
+        <div class="card project">
+            <div class="project-icon">🌐</div>
+            <h3>NotPremOG</h3>
+            <p>
+                My online identity and brand used across
+                different gaming, community and content projects.
+            </p>
+        </div>
+
+        <div class="card project">
+            <div class="project-icon">🎬</div>
+            <h3>YouTube</h3>
+            <p>
+                Building a motivation and self-improvement
+                content channel aimed at a young audience.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+
+    <h2 class="section-title">
+        My <span>Skills & Interests</span>
+    </h2>
+
+    <div class="skills">
+
+        <div class="skill">Minecraft Server Management</div>
+        <div class="skill">Discord Management</div>
+        <div class="skill">Content Creation</div>
+        <div class="skill">YouTube</div>
+        <div class="skill">Website Building</div>
+        <div class="skill">AI Tools</div>
+        <div class="skill">Video Editing</div>
+        <div class="skill">Learning & Self Improvement</div>
+
+    </div>
+</section>
+
+<!-- QUOTE -->
+<section>
+
+    <div class="quote">
+        "Don't wait for the perfect time.<br>
+        <span>Build your future one step at a time.</span>"
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="social">
+        <a href="https://github.com/premkashyapog">GitHub</a>
+        <a href="#">YouTube</a>
+        <a href="#">Discord</a>
+    </div>
+
+    © 2026 PremKashyapOG • Built with passion.
+
+</footer>
+
 </body>
-</html>
+    </html>
