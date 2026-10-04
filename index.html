@@ -37,6 +37,8 @@ body{
     overflow-x:hidden;
 }
 
+/* BACKGROUND */
+
 body::before{
     content:"";
     position:fixed;
@@ -204,6 +206,8 @@ section{
         drop-shadow(0 0 45px rgba(126,84,255,.08));
 }
 
+/* TEXTURE */
+
 .premium-name::before{
     content:"PREM KASHYAP";
 
@@ -227,6 +231,8 @@ section{
     opacity:.35;
     pointer-events:none;
 }
+
+/* UNDERLINE */
 
 .premium-name::after{
     content:"";
@@ -341,76 +347,6 @@ section{
 .btn-outline:hover{
     transform:translateY(-3px);
     border-color:rgba(91,145,255,.55);
-}
-
-/* STATS */
-
-.engagement{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:22px;
-    flex-wrap:wrap;
-}
-
-.stat{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    padding:9px 13px;
-
-    border:1px solid var(--border);
-    border-radius:9px;
-
-    background:rgba(255,255,255,.025);
-
-    font-family:"JetBrains Mono",monospace;
-    font-size:10px;
-
-    color:#737c91;
-
-    backdrop-filter:blur(10px);
-}
-
-.stat strong{
-    color:#dfe5f5;
-    font-weight:600;
-}
-
-.like-btn{
-    border:1px solid var(--border);
-
-    background:rgba(255,255,255,.025);
-
-    color:#9da5b8;
-
-    padding:9px 13px;
-
-    border-radius:9px;
-
-    font-family:"JetBrains Mono",monospace;
-    font-size:10px;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-.like-btn:hover{
-    border-color:rgba(255,91,130,.4);
-    color:#ff7899;
-    transform:translateY(-2px);
-}
-
-.like-btn.liked{
-    border-color:rgba(255,91,130,.35);
-    color:#ff7899;
-    background:rgba(255,91,130,.06);
-}
-
-.like-btn:disabled{
-    cursor:default;
 }
 
 /* SECTION HEADINGS */
@@ -756,12 +692,6 @@ footer{
 
 <body>
 
-<!-- BACKGROUND MUSIC -->
-
-<audio id="bgMusic" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
 <!-- NAVBAR -->
 
 <nav>
@@ -810,25 +740,6 @@ footer{
             <a href="#paid-projects" class="btn btn-outline">
                 Work With Me
             </a>
-
-        </div>
-
-        <!-- VIEWS + LIKE -->
-
-        <div class="engagement">
-
-            <div class="stat">
-                <span>VIEWS</span>
-                <strong id="viewCount">...</strong>
-            </div>
-
-            <button
-                id="likeButton"
-                class="like-btn"
-                type="button"
-            >
-                ♥ LIKE <strong id="likeCount">...</strong>
-            </button>
 
         </div>
 
@@ -1224,4 +1135,83 @@ footer{
             >
 
             <input
-  
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <select name="project_type" required>
+
+                <option value="">
+                    Select Project Type
+                </option>
+
+                <option>
+                    Video Editing
+                </option>
+
+                <option>
+                    Development
+                </option>
+
+                <option>
+                    Minecraft Project
+                </option>
+
+                <option>
+                    Plugin Work
+                </option>
+
+                <option>
+                    Server Management
+                </option>
+
+                <option>
+                    Other
+                </option>
+
+            </select>
+
+
+            <input
+                type="text"
+                name="budget"
+                placeholder="Budget"
+            >
+
+
+            <textarea
+                name="message"
+                placeholder="Tell me about your project..."
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+                style="border:none;"
+            >
+                Submit Project Request
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-main">
+        © Website made by Prem Kashyap
+    </div>
+
+    <div class="footer-release">
+        First Edi
