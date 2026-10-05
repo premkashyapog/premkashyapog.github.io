@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="music.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="music.js" defer></script>
 
 <style>
 
@@ -47,21 +48,11 @@ body::before{
     z-index:-3;
 
     background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(76,130,255,.14),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 25%,
-            rgba(143,91,255,.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 90%,
-            rgba(40,110,255,.08),
-            transparent 35%
-        );
+        radial-gradient(circle at 15% 15%,rgba(76,130,255,.14),transparent 30%),
+        radial-gradient(circle at 85% 25%,rgba(143,91,255,.13),transparent 30%),
+        radial-gradient(circle at 50% 90%,rgba(40,110,255,.08),transparent 35%);
+
+    animation:ambientMove 12s ease-in-out infinite alternate;
 }
 
 body::after{
@@ -73,17 +64,56 @@ body::after{
     opacity:.22;
 
     background-image:
-        linear-gradient(
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.035) 1px,
-            transparent 1px
-        );
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
 
     background-size:50px 50px;
+
+    animation:gridMove 18s linear infinite;
+}
+
+@keyframes ambientMove{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.08) translate(10px,-10px);}
+    100%{transform:scale(1.03) translate(-10px,10px);}
+}
+
+@keyframes gridMove{
+    from{background-position:0 0;}
+    to{background-position:50px 50px;}
+}
+
+/* FLOATING LIGHTS */
+
+.ambient-light{
+    position:fixed;
+    width:380px;
+    height:380px;
+    border-radius:50%;
+    pointer-events:none;
+    filter:blur(110px);
+    opacity:.09;
+    z-index:-1;
+    animation:floatLight 14s ease-in-out infinite alternate;
+}
+
+.ambient-one{
+    background:#4f8cff;
+    left:-190px;
+    top:15%;
+}
+
+.ambient-two{
+    background:#9a70ff;
+    right:-190px;
+    top:45%;
+    animation-delay:-6s;
+}
+
+@keyframes floatLight{
+    0%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(80px,60px) scale(1.12);}
+    100%{transform:translate(-20px,100px) scale(.95);}
 }
 
 /* NAVBAR */
@@ -95,7 +125,6 @@ nav{
     transform:translateX(-50%);
 
     width:min(1100px,92%);
-
     padding:15px 22px;
 
     display:flex;
@@ -109,6 +138,46 @@ nav{
     border-radius:18px;
 
     z-index:100;
+
+    animation:navEnter .9s cubic-bezier(.16,1,.3,1) both;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.25),
+        inset 0 1px rgba(255,255,255,.04);
+}
+
+nav::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+
+    background:linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255,255,255,.05),
+        transparent 80%
+    );
+
+    background-size:200% 100%;
+    animation:navShine 6s linear infinite;
+}
+
+@keyframes navEnter{
+    from{
+        opacity:0;
+        transform:translate(-50%,-25px);
+    }
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
+}
+
+@keyframes navShine{
+    from{background-position:200% 0;}
+    to{background-position:-200% 0;}
 }
 
 .logo{
@@ -168,9 +237,24 @@ section{
     letter-spacing:4px;
     color:#6e9dff;
     margin-bottom:20px;
+
+    animation:heroSmall .8s ease .15s both;
 }
 
-/* MAIN NAME */
+@keyframes heroSmall{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+        letter-spacing:8px;
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+        letter-spacing:4px;
+    }
+}
+
+/* NAME */
 
 .premium-name{
     position:relative;
@@ -200,14 +284,31 @@ section{
     -webkit-background-clip:text;
     background-clip:text;
 
-    animation:nameShine 5s linear infinite;
+    animation:
+        nameShine 5s linear infinite,
+        heroName 1.1s cubic-bezier(.16,1,.3,1) .25s both;
 
     filter:
         drop-shadow(0 0 18px rgba(82,139,255,.18))
         drop-shadow(0 0 45px rgba(126,84,255,.08));
 }
 
-/* TEXTURE */
+@keyframes nameShine{
+    0%{background-position:250% center;}
+    100%{background-position:-250% center;}
+}
+
+@keyframes heroName{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.96);
+        filter:blur(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
 
 .premium-name::before{
     content:"PREM KASHYAP";
@@ -233,13 +334,10 @@ section{
     pointer-events:none;
 }
 
-/* UNDERLINE */
-
 .premium-name::after{
     content:"";
 
     position:absolute;
-
     left:0;
     bottom:-16px;
 
@@ -262,27 +360,12 @@ section{
         underlineGlow 3s ease-in-out infinite 2s;
 }
 
-@keyframes nameShine{
-    0%{
-        background-position:250% center;
-    }
-
-    100%{
-        background-position:-250% center;
-    }
-}
-
 @keyframes underlineReveal{
-    to{
-        transform:scaleX(1);
-    }
+    to{transform:scaleX(1);}
 }
 
 @keyframes underlineGlow{
-    0%,100%{
-        opacity:.65;
-    }
-
+    0%,100%{opacity:.65;}
     50%{
         opacity:1;
         filter:blur(.5px);
@@ -296,8 +379,9 @@ section{
     font-size:14px;
 
     color:#8f97aa;
-
     letter-spacing:.5px;
+
+    animation:heroText .9s ease .55s both;
 }
 
 .hero-buttons{
@@ -305,15 +389,28 @@ section{
     gap:14px;
     margin-top:32px;
     flex-wrap:wrap;
+
+    animation:heroText .9s ease .7s both;
+}
+
+@keyframes heroText{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 .btn{
+    position:relative;
     display:inline-flex;
     align-items:center;
     justify-content:center;
 
     padding:13px 22px;
-
     border-radius:10px;
 
     text-decoration:none;
@@ -323,8 +420,8 @@ section{
     font-weight:600;
 
     transition:.3s;
-
     cursor:pointer;
+    overflow:hidden;
 }
 
 .btn-primary{
@@ -339,9 +436,7 @@ section{
 
 .btn-outline{
     color:white;
-
     border:1px solid var(--border);
-
     background:rgba(255,255,255,.03);
 }
 
@@ -350,7 +445,29 @@ section{
     border-color:rgba(91,145,255,.55);
 }
 
-/* SECTION HEADINGS */
+.btn::after{
+    content:"";
+    position:absolute;
+
+    width:0;
+    height:0;
+
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+
+    transform:translate(-50%,-50%);
+
+    transition:
+        width .5s ease,
+        height .5s ease;
+}
+
+.btn:hover::after{
+    width:250px;
+    height:250px;
+}
+
+/* HEADINGS */
 
 .heading{
     font-family:"JetBrains Mono",monospace;
@@ -359,7 +476,6 @@ section{
     letter-spacing:4px;
 
     color:#71809d;
-
     text-transform:uppercase;
 
     margin-bottom:20px;
@@ -381,6 +497,7 @@ section{
 
 .card{
     position:relative;
+    overflow:hidden;
 
     padding:28px;
 
@@ -394,17 +511,51 @@ section{
             rgba(255,255,255,.012)
         );
 
+    transition:
+        transform .35s cubic-bezier(.16,1,.3,1),
+        border-color .35s,
+        box-shadow .35s;
+
+    transform-style:preserve-3d;
+    will-change:transform;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    border-radius:inherit;
+
+    background:
+        radial-gradient(
+            350px circle at var(--mouse-x,50%) var(--mouse-y,50%),
+            rgba(91,145,255,.13),
+            transparent 45%
+        );
+
+    opacity:0;
     transition:.35s;
+    pointer-events:none;
+}
+
+.card:hover::before{
+    opacity:1;
 }
 
 .card:hover{
-    transform:translateY(-5px);
-
-    border-color:
-        rgba(91,145,255,.35);
+    transform:translateY(-7px);
+    border-color:rgba(91,145,255,.35);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.25);
+        0 25px 70px rgba(0,0,0,.3),
+        0 0 35px rgba(91,145,255,.06);
+}
+
+.card > *{
+    position:relative;
+    z-index:1;
 }
 
 .card h3{
@@ -424,9 +575,7 @@ section{
     font-size:10px;
 
     color:#6d9cff;
-
     letter-spacing:2px;
-
     text-transform:uppercase;
 
     margin-bottom:12px;
@@ -441,6 +590,9 @@ section{
 }
 
 .skill{
+    position:relative;
+    overflow:hidden;
+
     padding:10px 14px;
 
     border:1px solid var(--border);
@@ -458,7 +610,34 @@ section{
 
 .skill:hover{
     border-color:rgba(91,145,255,.4);
-    transform:translateY(-2px);
+    transform:translateY(-4px) scale(1.03);
+
+    box-shadow:0 8px 25px rgba(91,145,255,.08);
+}
+
+.skill::before{
+    content:"";
+
+    position:absolute;
+    top:0;
+    left:-120%;
+
+    width:70%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.12),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+    transition:.5s;
+}
+
+.skill:hover::before{
+    left:150%;
 }
 
 /* PROJECT */
@@ -467,7 +646,7 @@ section{
     overflow:hidden;
 }
 
-.project::before{
+.project::after{
     content:"";
 
     position:absolute;
@@ -479,17 +658,16 @@ section{
     top:-90px;
 
     background:#4f8cff;
-
     filter:blur(100px);
-
     opacity:.08;
+
+    pointer-events:none;
 }
 
 .project-info{
     display:flex;
     gap:8px;
     flex-wrap:wrap;
-
     margin-top:18px;
 }
 
@@ -497,13 +675,18 @@ section{
     border:1px solid var(--border);
 
     padding:6px 10px;
-
     border-radius:7px;
 
     font-family:"JetBrains Mono",monospace;
     font-size:10px;
-
     color:#aeb5c5;
+
+    transition:.3s;
+}
+
+.tag:hover{
+    border-color:rgba(91,145,255,.45);
+    color:#dce5ff;
 }
 
 /* CONTACT */
@@ -511,11 +694,12 @@ section{
 .contact-list{
     display:flex;
     flex-direction:column;
-
     margin-top:22px;
 }
 
 .contact-line{
+    position:relative;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -525,12 +709,37 @@ section{
     border-bottom:1px solid var(--border);
 
     text-decoration:none;
-
     transition:.3s;
+    overflow:hidden;
 }
 
 .contact-line:first-child{
     border-top:1px solid var(--border);
+}
+
+.contact-line::after{
+    content:"";
+
+    position:absolute;
+    bottom:0;
+    left:0;
+
+    width:0;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5b91ff,
+            #9a70ff,
+            transparent
+        );
+
+    transition:.45s;
+}
+
+.contact-line:hover::after{
+    width:100%;
 }
 
 .contact-name{
@@ -538,7 +747,6 @@ section{
 
     font-size:11px;
     letter-spacing:1.5px;
-
     color:#737c91;
 }
 
@@ -547,7 +755,6 @@ section{
 
     font-size:14px;
     font-weight:600;
-
     color:#e7eaf2;
 
     transition:.3s;
@@ -580,7 +787,6 @@ textarea{
     border-radius:10px;
 
     color:white;
-
     outline:none;
 
     font-family:"Inter",sans-serif;
@@ -595,7 +801,8 @@ textarea:focus{
     border-color:#4f8cff;
 
     box-shadow:
-        0 0 0 3px rgba(79,140,255,.08);
+        0 0 0 3px rgba(79,140,255,.08),
+        0 0 25px rgba(79,140,255,.05);
 }
 
 textarea{
@@ -607,43 +814,53 @@ select option{
     background:#090b11;
 }
 
+/* SCROLL REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    filter:blur(5px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.16,1,.3,1),
+        filter .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+}
+
 /* FOOTER */
 
 footer{
     border-top:1px solid var(--border);
 
     margin-top:50px;
-
     padding:35px 20px;
 
     text-align:center;
-
     font-size:11px;
 }
 
 .footer-main{
     font-family:"Space Grotesk",sans-serif;
-
     color:#b9bfcc;
-
     margin-bottom:9px;
 }
 
 .footer-release{
     font-family:"JetBrains Mono",monospace;
-
     color:#606878;
-
     letter-spacing:.5px;
-
     margin-bottom:8px;
 }
 
 .github-public{
     font-family:"JetBrains Mono",monospace;
-
     color:#737c8d;
-
     font-size:10px;
 }
 
@@ -686,12 +903,33 @@ footer{
         flex-direction:column;
     }
 
+    .ambient-light{
+        width:250px;
+        height:250px;
+        filter:blur(80px);
+    }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+    }
+
 }
 
 </style>
 </head>
 
 <body>
+
+<div class="ambient-light ambient-one"></div>
+<div class="ambient-light ambient-two"></div>
 
 <!-- NAVBAR -->
 
@@ -710,7 +948,6 @@ footer{
     </div>
 
 </nav>
-
 
 <main>
 
@@ -748,7 +985,6 @@ footer{
 
 </section>
 
-
 <!-- ABOUT -->
 
 <section id="about">
@@ -759,7 +995,7 @@ footer{
 
     <div class="grid">
 
-        <div class="card">
+        <div class="card reveal">
 
             <h3>Who I Am</h3>
 
@@ -771,8 +1007,7 @@ footer{
 
         </div>
 
-
-        <div class="card">
+        <div class="card reveal">
 
             <h3>What I Do</h3>
 
@@ -788,7 +1023,6 @@ footer{
 
 </section>
 
-
 <!-- EXPERIENCE -->
 
 <section id="experience">
@@ -799,7 +1033,7 @@ footer{
 
     <div class="grid">
 
-        <div class="card">
+        <div class="card reveal">
 
             <div class="card-label">
                 2+ Years
@@ -815,8 +1049,7 @@ footer{
 
         </div>
 
-
-        <div class="card">
+        <div class="card reveal">
 
             <div class="card-label">
                 6+ Years
@@ -831,8 +1064,7 @@ footer{
 
         </div>
 
-
-        <div class="card">
+        <div class="card reveal">
 
             <div class="card-label">
                 1+ Year
@@ -847,8 +1079,7 @@ footer{
 
         </div>
 
-
-        <div class="card">
+        <div class="card reveal">
 
             <div class="card-label">
                 4+ Years
@@ -867,7 +1098,6 @@ footer{
 
 </section>
 
-
 <!-- SKILLS -->
 
 <section id="skills">
@@ -878,54 +1108,21 @@ footer{
 
     <div class="skills">
 
-        <div class="skill">
-            Developer
-        </div>
-
-        <div class="skill">
-            HTML
-        </div>
-
-        <div class="skill">
-            CSS
-        </div>
-
-        <div class="skill">
-            Code Design
-        </div>
-
-        <div class="skill">
-            Minecraft
-        </div>
-
-        <div class="skill">
-            Server Management
-        </div>
-
-        <div class="skill">
-            Plugin Configuration
-        </div>
-
-        <div class="skill">
-            Video Editing
-        </div>
-
-        <div class="skill">
-            Content Creation
-        </div>
-
-        <div class="skill">
-            Market Analysis
-        </div>
-
-        <div class="skill">
-            Risk Management
-        </div>
+        <div class="skill reveal">Developer</div>
+        <div class="skill reveal">HTML</div>
+        <div class="skill reveal">CSS</div>
+        <div class="skill reveal">Code Design</div>
+        <div class="skill reveal">Minecraft</div>
+        <div class="skill reveal">Server Management</div>
+        <div class="skill reveal">Plugin Configuration</div>
+        <div class="skill reveal">Video Editing</div>
+        <div class="skill reveal">Content Creation</div>
+        <div class="skill reveal">Market Analysis</div>
+        <div class="skill reveal">Risk Management</div>
 
     </div>
 
 </section>
-
 
 <!-- PROJECTS -->
 
@@ -937,7 +1134,7 @@ footer{
 
     <div class="grid">
 
-        <div class="card project">
+        <div class="card project reveal">
 
             <div class="card-label">
                 Public Minecraft Server
@@ -951,12 +1148,10 @@ footer{
             </p>
 
             <div class="project-info">
-
                 <span class="tag">Java</span>
                 <span class="tag">Bedrock</span>
                 <span class="tag">Voice Chat</span>
                 <span class="tag">Economy</span>
-
             </div>
 
             <p style="margin-top:18px;">
@@ -965,254 +1160,8 @@ footer{
 
         </div>
 
-
-        <div class="card">
+        <div class="card reveal">
 
             <div class="card-label">
                 Future
-            </div>
-
-            <h3>Future Projects</h3>
-
-            <p>
-                More development, creative and Minecraft
-                projects will be added here as they are released.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-    <div class="heading">
-        Contact Me
-    </div>
-
-    <div class="card">
-
-        <h3>Let's Connect</h3>
-
-        <p>
-            Reach me through any of the following platforms.
-        </p>
-
-
-        <div class="contact-list">
-
-            <a
-                href="mailto:premkashyap7678@gmail.com"
-                class="contact-line"
-            >
-
-                <span class="contact-name">
-                    EMAIL
-                </span>
-
-                <span class="contact-value">
-                    premkashyap7678@gmail.com
-                </span>
-
-            </a>
-
-
-            <a
-                href="https://instagram.com/premkashyapog"
-                target="_blank"
-                class="contact-line"
-            >
-
-                <span class="contact-name">
-                    INSTAGRAM
-                </span>
-
-                <span class="contact-value">
-                    @premkashyapog
-                </span>
-
-            </a>
-
-
-            <a
-                href="https://youtube.com/@notpremog"
-                target="_blank"
-                class="contact-line"
-            >
-
-                <span class="contact-name">
-                    YOUTUBE
-                </span>
-
-                <span class="contact-value">
-                    @NotPremOG
-                </span>
-
-            </a>
-
-
-            <div class="contact-line">
-
-                <span class="contact-name">
-                    DISCORD
-                </span>
-
-                <span class="contact-value">
-                    NotPremOG
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- PAID PROJECTS -->
-
-<section id="paid-projects">
-
-    <div class="heading">
-        Work With Me
-    </div>
-
-    <div class="card">
-
-        <h3>Contact For Any Paid Project</h3>
-
-        <p>
-            Available for editing, development, Minecraft projects,
-            server management, plugin work and other related projects.
-        </p>
-
-
-        <div class="skills" style="margin-top:20px;">
-
-            <div class="skill">
-                Video Editing
-            </div>
-
-            <div class="skill">
-                Development
-            </div>
-
-            <div class="skill">
-                Plugin Work
-            </div>
-
-            <div class="skill">
-                Server Management
-            </div>
-
-            <div class="skill">
-                Minecraft Projects
-            </div>
-
-        </div>
-
-
-        <form
-            action="https://formspree.io/f/xrpezrod"
-            method="POST"
-        >
-
-            <input
-                type="hidden"
-                name="_subject"
-                value="New Paid Project Request - Prem Kumar Portfolio"
-            >
-
-            <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-            >
-
-            <select name="project_type" required>
-
-                <option value="">
-                    Select Project Type
-                </option>
-
-                <option>
-                    Video Editing
-                </option>
-
-                <option>
-                    Development
-                </option>
-
-                <option>
-                    Minecraft Project
-                </option>
-
-                <option>
-                    Plugin Work
-                </option>
-
-                <option>
-                    Server Management
-                </option>
-
-                <option>
-                    Other
-                </option>
-
-            </select>
-
-
-            <input
-                type="text"
-                name="budget"
-                placeholder="Budget"
-            >
-
-
-            <textarea
-                name="message"
-                placeholder="Tell me about your project..."
-                required
-            ></textarea>
-
-
-            <button
-                type="submit"
-                class="btn btn-primary"
-                style="border:none;"
-            >
-                Submit Project Request
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="footer-main">
-        © Website made by Prem Kashyap
-    </div>
-
-    <div class="footer-release">
-        Publish Using Github 
+         
