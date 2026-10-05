@@ -1,1 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Prem Kashyap | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   BASE
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#05060a;
+    --card:#0b0d14;
+    --text:#f5f7ff;
+    --muted:#8e95a7;
+    --blue:#5b91ff;
+    --purple:#9a70ff;
+    --border:rgba(255,255,255,.09);
+}
+
+html{
+    background:#05060a;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Inter",sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(76,130,255,.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(143,91,255,.13),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(40,110,255,.08),
+            transparent 35%
+        );
+
+    animation:ambient 10s ease-in-out infinite alternate;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+    opacity:.22;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        );
+
+    background-size:50px 50px;
+
+    animation:gridMove 18s linear infinite;
+}
+
+@keyframes ambient{
+    0%{
+        transform:scale(1);
+    }
+
+    100%{
+        transform:scale(1.12);
+    }
+}
+
+@keyframes gridMove{
+    from{
+        background-position:0 0;
+    }
+
+    to{
+        background-position:50px 50px;
+    }
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:min(1100px,92%);
+    padding:15px 22px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(8,10,16,.76);
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    z-index:100;
+
+    animation:navIn .8s ease both;
+}
+
+@keyframes navIn{
+    from{
+        opacity:0;
+        transform:translate(-50%,-25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
+}
+
+.logo{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1.5px;
+}
+
+.logo span{
+    color:var(--blue);
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    position:relative;
+
+    font-size:12px;
+    color:#9ba2b4;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:"";
+
+    position:absolute;
+    left:0;
+    bottom:-6px;
+
+    width:0;
+    height:1px;
+
+    background:var(--blue);
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+    width:min(1100px,90%);
+    margin:auto;
+}
+
+section{
+    padding:110px 0;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    padding-top:130px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero-small{
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:11px;
+    letter-spacing:4px;
+
+    color:#6e9dff;
+
+    margin-bottom:20px;
+
+    animation:fadeUp .8s .15s both;
+}
+
+.premium-name{
+    position:relative;
+    display:inline-block;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:clamp(55px,9vw,105px);
+
+    font-weight:700;
+
+    letter-spacing:-5px;
+    line-height:.95;
+
+    color:transparent;
+
+    background:
+        linear-gradient(
+            110deg,
+            #fff 5%,
+            #b9cfff 28%,
+            #fff 43%,
+            #7daaff 55%,
+            #c2a8ff 68%,
+            #fff 85%
+        );
+
+    background-size:250% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    filter:
+        drop-shadow(0 0 18px rgba(82,139,255,.18))
+        drop-shadow(0 0 45px rgba(126,84,255,.08));
+
+    animation:
+        nameShine 5s linear infinite,
+        heroName .9s .3s both;
+}
+
+@keyframes heroName{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes nameShine{
+    0%{
+        background-position:250% center;
+    }
+
+    100%{
+        background-position:-250% center;
+    }
+}
+
+.premium-name::before{
+    content:"PREM KASHYAP";
+
+    position:absolute;
+    inset:0;
+
+    color:transparent;
+
+    background-image:
+        repeating-linear-gradient(
+            135deg,
+            rgba(255,255,255,.13) 0,
+            rgba(255,255,255,.13) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    opacity:.35;
+}
+
+.premium-name::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-16px;
+
+    width:100%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #5c91ff,
+            #9a6cff,
+            transparent
+        );
+
+    transform-origin:center;
+
+    animation:
+        underline 1.2s 1s ease both,
+        underlinePulse 3s 2.2s ease-in-out infinite;
+}
+
+@keyframes underline{
+    from{
+        transform:scaleX(.05);
+        opacity:0;
+    }
+
+    to{
+        transform:scaleX(1);
+        opacity:1;
+    }
+}
+
+@keyframes underlinePulse{
+    0%,100%{
+        opacity:.6;
+    }
+
+    50%{
+        opacity:1;
+        filter:blur(.5px);
+    }
+}
+
+.hero-description{
+    margin-top:40px;
+
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:14px;
+
+    color:#8f97aa;
+
+    letter-spacing:.5px;
+
+    animation:fadeUp .8s .9s both;
+}
+
+.hero-buttons{
+    display:flex;
+
+    gap:14px;
+
+    margin-top:32px;
+
+    flex-wrap:wrap;
+
+    animation:fadeUp .8s 1.05s both;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+    position:relative;
+    overflow:hidden;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:13px 22px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-family:"Inter",sans-serif;
+
+    font-size:12px;
+    font-weight:600;
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+.btn::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:70%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.3),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+
+    transition:.6s;
+}
+
+.btn:hover::after{
+    left:140%;
+}
+
+.btn-primary{
+    background:#fff;
+    color:#05060a;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(255,255,255,.14);
+}
+
+.btn-outline{
+    color:#fff;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.03);
+}
+
+.btn-outline:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(91,145,255,.55);
+
+    box-shadow:
+        0 10px 30px rgba(91,145,255,.1);
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+.heading{
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:11px;
+    letter-spacing:4px;
+
+    color:#71809d;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+}
+
+.title{
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:clamp(35px,6vw,65px);
+
+    letter-spacing:-2px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+
+    padding:28px;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.012)
+        );
+
+    transition:
+        transform .4s,
+        border-color .4s,
+        box-shadow .4s;
+
+    opacity:0;
+    transform:translateY(35px);
+}
+
+.card.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-90px;
+    top:-90px;
+
+    background:#4f8cff;
+
+    filter:blur(100px);
+
+    opacity:.07;
+
+    transition:.5s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+
+    border-color:rgba(91,145,255,.35);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+}
+
+.card:hover::before{
+    opacity:.13;
+}
+
+.card h3{
+    position:relative;
+
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:18px;
+
+    margin-bottom:10px;
+}
+
+.card p{
+    position:relative;
+
+    color:var(--muted);
+
+    line-height:1.75;
+
+    font-size:13px;
+}
+
+.card-label{
+    position:relative;
+
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:10px;
+
+    color:#6d9cff;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:12px;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.skill{
+    padding:10px 14px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.025);
+
+    border-radius:9px;
+
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:11px;
+
+    color:#c5cad6;
+
+    transition:.3s;
+
+    opacity:0;
+    transform:scale(.9);
+}
+
+.skill.visible{
+    opacity:1;
+    transform:scale(1);
+}
+
+.skill:hover{
+    border-color:rgba(91,145,255,.4);
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    color:#fff;
+
+    box-shadow:
+        0 8px 25px rgba(91,145,255,.08);
+}
+
+/* =========================
+   PROJECT
+========================= */
+
+.project{
+    overflow:hidden;
+}
+
+.project-info{
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-top:18px;
+}
+
+.tag{
+    border:1px solid var(--border);
+
+    padding:6px 10px;
+
+    border-radius:7px;
+
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:10px;
+
+    color:#aeb5c5;
+
+    transition:.3s;
+}
+
+.tag:hover{
+    color:#fff;
+
+    border-color:rgba(91,145,255,.4);
+
+    transform:translateY(-2px);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-list{
+    display:flex;
+    flex-direction:column;
+
+    margin-top:22px;
+}
+
+.contact-line{
+    position:relative;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid var(--border);
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.contact-line:first-child{
+    border-top:1px solid var(--border);
+}
+
+.contact-line::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-1px;
+
+    width:0;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--purple)
+        );
+
+    transition:.4s;
+}
+
+.contact-line:hover::after{
+    width:100%;
+}
+
+.contact-name{
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:11px;
+
+    letter-spacing:1.5px;
+
+    color:#737c91;
+}
+
+.contact-value{
+    font-family:"Space Grotesk",sans-serif;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#e7eaf2;
+
+    transition:.3s;
+}
+
+.contact-line:hover .contact-value{
+    color:#6e9dff;
+
+    transform:translateX(-4px);
+}
+
+/* =========================
+   FORM
+========================= */
+
+form{
+    display:grid;
+
+    gap:14px;
+
+    margin-top:25px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+
+    padding:14px 15px;
+
+    background:#090b11;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    color:white;
+
+    outline:none;
+
+    font-family:"Inter",sans-serif;
+
+    font-size:13px;
+
+    transition:.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#4f8cff;
+
+    box-shadow:
+        0 0 0 3px rgba(79,140,255,.08);
+}
+
+textarea{
+    min-height:130px;
+
+    resize:vertical;
+}
+
+select option{
+    background:#090b11;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--border);
+
+    margin-top:50px;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    font-size:11px;
+}
+
+.footer-main{
+    font-family:"Space Grotesk",sans-serif;
+
+    color:#b9bfcc;
+
+    margin-bottom:9px;
+}
+
+.footer-release{
+    font-family:"JetBrains Mono",monospace;
+
+    color:#606878;
+
+    letter-spacing:.5px;
+
+    margin-bottom:8px;
+}
+
+.github-public{
+    font-family:"JetBrains Mono",monospace;
+
+    color:#737c8d;
+
+    font-size:10px;
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-toggle{
+    position:fixed;
+
+    right:24px;
+    bottom:24px;
+
+    z-index:9999;
+
+    min-width:88px;
+    min-height:44px;
+
+    padding:11px 16px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:12px;
+
+    background:rgba(10,12,20,.85);
+
+    backdrop-filter:blur(15px);
+
+    color:#cbd7ff;
+
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.3);
+
+    transition:.3s;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.music-toggle:hover{
+    transform:translateY(-3px);
+
+    border-color:rgba(91,145,255,.6);
+
+    box-shadow:
+        0 0 25px rgba(91,145,255,.15);
+}
+
+.music-toggle.playing{
+    color:#fff;
+
+    border-color:rgba(91,145,255,.7);
+
+    box-shadow:
+        0 0 30px rgba(91,145,255,.2);
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:#05060a;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#1d2433;
+
+    border-radius:10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:750px){
+
+    nav{
+        padding:13px 16px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    section{
+        padding:80px 0;
+    }
+
+    .hero{
+        min-height:90vh;
+    }
+
+    .premium-name{
+        font-size:clamp(48px,14vw,75px);
+
+        letter-spacing:-3px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-description{
+        font-size:12px;
+    }
+
+    .contact-line{
+        align-items:flex-start;
+
+        gap:12px;
+
+        flex-direction:column;
+    }
+
+    .music-toggle{
+        right:16px;
+        bottom:16px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        PREM <span>KASHYAP</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<audio
+    id="bgMusic"
+    src="./music.mp3"
+    loop
+    preload="auto">
+</audio>
+
+<button
+    id="musicToggle"
+    class="music-toggle"
+    type="button"
+    aria-label="Toggle background music">
+
+    ♫ OFF
+
+</button>
+
+
+<main>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            WELCOME TO MY PORTFOLIO
+        </div>
+
+        <h1 class="premium-name">
+            PREM KASHYAP
+        </h1>
+
+        <p class="hero-description">
+            Developer · Gamer · Creator
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#projects"
+                class="btn btn-primary">
+
+                View Projects
+
+            </a>
+
+            <a
+                href="#contact"
+                class="btn btn-outline">
+
+                Work With Me
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="heading">
+        01 — ABOUT
+    </div>
+
+    <h2 class="title">
+        Who I Am
+    </h2>
+
+    <div
+        class="grid"
+        style="margin-top:35px;">
+
+        <div class="card reveal">
+
+            <div class="card-label">
+                ABOUT ME
+            </div>
+
+            <h3>
+                Developer · Gamer · Creator
+            </h3>
+
+            <p>
+                I'm Prem Kumar, also known online as NotPremOG.
+                I'm a Commerce student from Delhi interested in
+                development, gaming, editing, technology and Minecraft.
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="card-label">
+                WHAT I DO
+            </div>
+
+            <h3>
+                Digital Projects
+            </h3>
+
+            <p>
+                Development, website design, Minecraft projects,
+                server management, editing and content creation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCE
+========================= -->
+
+<section id="experience">
+
+    <div class="heading">
+        02 — EXPERIENCE
+    </div>
+
+    <h2 class="title">
+        My Journey
+    </h2>
+
+    <div
+        class="grid"
+        style="margin-top:35px;">
+
+        <div class="card reveal">
+
+            <div class="card-label">
+                DEVELOPMENT
+            </div>
+
+            <h3>
+                2+ Years Developer
+            </h3>
+
+            <p>
+                Learning and building websites, digital projects,
+                Minecraft systems and server solutions.
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="card-label">
+                GAMING
+            </div>
+
+            <h3>
+                6+ Years Gaming
+            </h3>
+
+            <p>
+                Years of gaming experience with a strong focus
+                on Minecraft and multiplayer communities.
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="card-label">
+                MARKETS
+            </div>
+
+            <h3>
+                1+ Year Forex & Market Learning
+            </h3>
+
+            <p>
+                Learning market analysis, risk management and
+                financial markets.
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="card-label">
+                CREATIVE
+            </div>
+
+            <h3>
+                4+ Years Editing & Content
+            </h3>
+
+            <p>
+                Creating and editing digital content with focus
+                on improving quality and presentation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills">
+
+    <div class="heading">
+        03 — SKILLS
+    </div>
+
+    <h2 class="title">
+        What I Know
+    </h2>
+
+    <div
+        class="skills"
+        style="margin-top:35px;">
+
+        <div class="skill">Developer</div>
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">Code Design</div>
+        <div class="skill">Minecraft</div>
+        <div class="skill">Server Management</div>
+        <div class="skill">Plugin Configuration</div>
+        <div class="skill">Video Editing</div>
+        <d
