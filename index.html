@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prem Kashyap (NotPremOG) | Minecraft Developer, Gamer & Creator</title>
+<meta name="description" content="Prem Kashyap (NotPremOG): developer, gamer and creator from Delhi. Minecraft servers, plugins, websites and video editing. Owner of Valora MC.">
+<meta name="theme-color" content="#050806">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prem Kashyap (NotPremOG) | Developer, Gamer & Creator">
+<meta property="og:description" content="Minecraft servers, plugins, websites and video editing. Join Valora MC at valoramc.mine.bz:25543.">
+<meta property="og:url" content="https://premkashyapog.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://premkashyapog.github.io/">
+<link rel="icon" href="logo.png">
+<meta property="og:image" content="https://premkashyapog.github.io/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050806;--g1:#34d975;--g2:#b6f34a;--text:#f1f7f3;--muted:#9bb0a3;--glass:rgba(255,255,255,.04);--line:rgba(255,255,255,.1);--r:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px;background:var(--bg)}
+body{background:var(--bg);color:var(--text);font:16px/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--g2);outline-offset:3px}
+h1,h2,h3,.logo{font-family:Sora,Inter,sans-serif;line-height:1.1}
+.skip{position:absolute;left:-999px;top:8px;background:var(--g2);color:#06100a;padding:8px 14px;border-radius:8px;z-index:500}.skip:focus{left:8px}
+.wrap{width:min(1040px,90%);margin:auto}
+/* background */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 75%)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;will-change:transform}
+.b1{width:480px;height:480px;background:#14a85a;left:-120px;top:-100px;animation:drift 18s ease-in-out infinite alternate}
+.b2{width:420px;height:420px;background:#8fd430;right:-120px;top:30vh;opacity:.16;animation:drift 22s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(70px,60px) scale(1.12)}}
+/* nav */
+header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1040px,92%);z-index:100;background:rgba(8,14,10,.7);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:18px}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 18px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;text-decoration:none}.mark{height:36px;width:36px;object-fit:cover;border-radius:50%;border:1px solid var(--line)}.logo b{background:linear-gradient(90deg,var(--g1),var(--g2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.links{display:flex;gap:24px;list-style:none}
+.links a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 0;position:relative;transition:color .2s}
+.links a:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--g1),var(--g2));transition:width .3s}
+.links a:hover,.links a.on{color:var(--text)}.links a:hover:after,.links a.on:after{width:100%}
+.tools{display:flex;gap:8px;align-items:center}
+.ib{height:38px;min-width:38px;padding:0 14px;border:1px solid var(--line);border-radius:11px;background:var(--glass);color:var(--text);font:500 13px Inter;cursor:pointer;transition:.2s}
+.ib:hover{border-color:var(--g1)}.ib[aria-pressed=true]{background:var(--g1);border-color:var(--g1);color:#04100a}
+.menu-btn{display:none;position:relative;width:44px;height:44px;border-radius:13px;border:1px solid var(--line);background:var(--glass);cursor:pointer;transition:border-color .2s,background .2s}
+.menu-btn:hover{border-color:var(--g1)}
+.menu-btn span{position:absolute;left:12px;right:12px;height:2px;border-radius:2px;background:var(--text);transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .2s,top .35s}
+.menu-btn span:nth-child(1){top:15px}.menu-btn span:nth-child(2){top:21px;right:18px}.menu-btn span:nth-child(3){top:27px}
+.open .menu-btn{background:rgba(52,217,117,.14);border-color:var(--g1)}
+.open .menu-btn span:nth-child(1){top:21px;transform:rotate(45deg)}.open .menu-btn span:nth-child(2){opacity:0}.open .menu-btn span:nth-child(3){top:21px;transform:rotate(-45deg)}
+/* buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:13px;font:600 15px Inter;text-decoration:none;border:1px solid var(--line);color:var(--text);background:var(--glass);cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--g1)}
+.btn.main{background:linear-gradient(135deg,var(--g1),var(--g2));color:#04100a;border:0;box-shadow:0 8px 30px rgba(52,217,117,.28)}
+.btn.main:hover{box-shadow:0 12px 40px rgba(52,217,117,.45)}
+.btn.main:before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn.main:hover:before{left:130%}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}.btn.sm{min-height:36px;padding:0 16px;font-size:13px;border-radius:10px}
+/* hero */
+.hero{padding:170px 0 90px}
+.s{opacity:0;transform:translateY(22px);animation:in .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i,0)*.12s)}
+@keyframes in{to{opacity:1;transform:none}}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid rgba(52,217,117,.3);border-radius:99px;background:rgba(52,217,117,.07);font-size:13px;color:#8df0b4;margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--g1);box-shadow:0 0 0 0 rgba(52,217,117,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 9px rgba(52,217,117,0)}100%{box-shadow:0 0 0 0 rgba(52,217,117,0)}}
+h1{font-size:clamp(40px,10.5vw,108px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:20px}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .04em .14em;margin-right:.2em}
+.w>span{display:inline-block;transform:translateY(112%);background:linear-gradient(110deg,#fff 10%,#8df0b4 40%,var(--g2) 60%,#fff 90%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise 1s cubic-bezier(.2,.7,.2,1) var(--d) forwards,sheen 7s linear 1.4s infinite}
+@keyframes rise{to{transform:none}}@keyframes sheen{to{background-position:-220% 0}}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.pills span{padding:6px 16px;border-radius:99px;border:1px solid var(--line);background:var(--glass);font:600 14px Sora;color:#d6efe0}
+.lede{max-width:56ch;color:var(--muted);font-size:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 40px}
+.server{position:relative;max-width:580px;padding:22px 24px;border-radius:var(--r);background:rgba(10,18,13,.8);backdrop-filter:blur(10px)}
+.server:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,var(--g1),transparent 40%,var(--g2) 70%,transparent);background-size:250% 250%;animation:flow 6s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+@keyframes flow{to{background-position:250% 250%}}
+.server h2{font-size:24px;margin-bottom:4px}
+.status{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:var(--muted)}
+.status:before{content:"";width:9px;height:9px;border-radius:50%;background:#6b7a71;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.status[data-state=on]{color:#8df0b4}.status[data-state=on]:before{background:var(--g1);animation:ping 2s infinite}
+.status[data-state=off]{color:#f0a08f}.status[data-state=off]:before{background:#e0675a;animation:none}
+.status[data-state=na]{color:#8df0b4}.status[data-state=na]:before{background:var(--g1);animation:none}
+.ip{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+code{font:500 15px ui-monospace,Menlo,Consolas,monospace;background:rgba(0,0,0,.45);border:1px solid var(--line);padding:9px 14px;border-radius:10px;color:var(--g2);word-break:break-all}
+/* sections */
+section{padding:84px 0}
+h2.t{font-size:clamp(32px,5.5vw,52px);font-weight:700;letter-spacing:-.03em;margin-bottom:34px}
+h2.t:after{content:"";display:block;width:56px;height:4px;border-radius:4px;margin-top:14px;background:linear-gradient(90deg,var(--g1),var(--g2))}
+.two{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
+p+p{margin-top:12px}.muted{color:var(--muted)}
+.list{list-style:none;display:grid;gap:12px}
+.list li{padding-left:30px;position:relative}
+.list li:before{content:"";position:absolute;left:0;top:.5em;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,var(--g2) 25%,rgba(52,217,117,.25) 30%)}
+/* spotlight cards */
+.sp{position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .3s,border-color .3s}
+.sp:before{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(52,217,117,.16),transparent 65%);opacity:0;transition:opacity .3s;pointer-events:none}
+.sp:hover{transform:translateY(-5px);border-color:rgba(52,217,117,.4)}.sp:hover:before{opacity:1}
+.sp>*{position:relative}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat strong{display:block;font:800 46px Sora;letter-spacing:-.04em;line-height:1;background:linear-gradient(120deg,var(--g1),var(--g2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat h3{font-size:17px;margin:12px 0 6px}.stat p{font-size:14px;color:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.skills h3{font-size:19px;margin-bottom:14px;color:#8df0b4}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.chips li{padding:6px 13px;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:99px;font-size:14px}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pc{display:flex;flex-direction:column;gap:14px}
+.ph{display:flex;align-items:center;gap:16px}.ph h3{font-size:26px}
+.plogo{width:72px;height:72px;border-radius:18px;object-fit:cover;background:#000;border:1px solid var(--line)}
+.by{font-size:14px;color:#8df0b4}
+.meta{display:grid;gap:10px}.meta div{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}
+.meta dt{font-size:13px;color:var(--muted)}.meta dd{font-size:14px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}.pc .btn,.pc .btns{align-self:flex-start}
+.lead{max-width:60ch;color:var(--muted);font-size:18px;margin:-12px 0 28px}
+.grid5{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.grid5 h3{font-size:17px;margin-bottom:6px;color:#d6efe0}.grid5 p{font-size:14px;color:var(--muted)}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.rgrid:empty{display:none}
+.rev .rh{display:flex;align-items:center;gap:12px;margin-bottom:10px}.av{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+.empty{text-align:center;border-style:dashed;padding:46px 26px;display:flex;flex-direction:column;align-items:center;gap:12px}.empty h3{font-size:24px}.empty p{max-width:44ch;margin-bottom:6px}
+.empty[hidden]{display:none}
+.btn.discord{gap:12px;min-height:54px;padding:0 30px;margin-bottom:26px;background:rgba(52,217,117,.1);border-color:rgba(52,217,117,.45);color:#d6ffe6}
+.btn.discord svg{transition:transform .35s}.btn.discord:hover svg{transform:rotate(-12deg) scale(1.15)}
+.btn.discord:hover{background:rgba(52,217,117,.2);box-shadow:0 10px 34px rgba(52,217,117,.25)}
+.fab{position:fixed;left:18px;bottom:18px;z-index:90;display:flex;align-items:center;gap:10px;height:44px;padding:0 16px;background:rgba(8,14,10,.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.fab[hidden]{display:none}
+.eq{display:flex;align-items:flex-end;gap:2px;height:14px}.eq i{width:3px;height:4px;border-radius:2px;background:currentColor}
+.playing .eq i{animation:eq .9s ease-in-out infinite}.playing .eq i:nth-child(2){animation-delay:.2s}.playing .eq i:nth-child(3){animation-delay:.4s}
+@keyframes eq{50%{height:14px}}
+.pt{position:absolute;bottom:-10px;border-radius:50%;background:var(--g2);opacity:0;animation:up linear infinite}
+@keyframes up{10%{opacity:.5}90%{opacity:.25}to{transform:translateY(-110vh);opacity:0}}
+/* work + form */
+.work{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+form{display:grid;gap:14px;padding:26px;background:var(--glass);border:1px solid var(--line);border-radius:var(--r)}
+label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+input,select,textarea{width:100%;padding:13px 14px;background:rgba(0,0,0,.4);border:1px solid var(--line);border-radius:11px;color:var(--text);font:16px Inter;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--g1);box-shadow:0 0 0 3px rgba(52,217,117,.15)}
+select option{background:#0b120d}
+textarea{min-height:120px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+#formStatus{min-height:1.4em;font-size:14px;color:#8df0b4}
+/* contact */
+.contact{list-style:none;border-top:1px solid var(--line)}
+.contact li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.contact span{color:var(--muted);font-size:14px}
+.contact a,.val{font:600 19px Sora;text-decoration:none;transition:color .2s,transform .2s;display:inline-block}
+.contact a:hover{color:var(--g2);transform:translateX(-4px)}
+.row{display:flex;align-items:center;gap:12px}
+footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:14px}
+.top{position:fixed;right:18px;bottom:18px;opacity:0;visibility:hidden;transition:.25s;z-index:90}.top.show{opacity:1;visibility:visible}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}.js .rv.in{opacity:1;transform:none}
+@media(max-width:800px){
+ .links{position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:rgba(8,14,10,.97);border:1px solid var(--line);border-radius:16px;padding:8px 16px;opacity:0;visibility:hidden;transform:translateY(-10px) scale(.98);transform-origin:top;transition:opacity .3s,transform .3s,visibility .3s}
+ .open .links{opacity:1;visibility:visible;transform:none}.links a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}.links li:last-child a{border:0}
+ .menu-btn{display:block}
+ .hero{padding:130px 0 60px}section{padding:60px 0}
+ .work,.projects,.skills,.stats{grid-template-columns:1fr}
+}
+@media(max-width:420px){.stats{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.s,.js .rv,.w>span{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div></div>
+<header id="top">
+ <div class="bar">
+  <a class="logo" href="#hero"><img class="mark" src="logo.png" alt="" width="34" height="34" onerror="this.remove()">My <b>Portfolio</b></a>
+  <ul class="links" id="links">
+   <li><a href="#about">About</a></li><li><a href="#experience">Experience</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#work">Work</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="tools">
+   <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="links" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+ </div>
+</header>
+<audio id="bgm" src="music.mp3" loop preload="none"></audio>
+<button class="ib fab" id="music" type="button" aria-pressed="false" aria-label="Toggle background music" hidden><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span><span id="musicLabel">Music: paused</span></button>
+
+<main id="main">
+ <section class="hero" id="hero">
+  <div class="wrap">
+   <p class="badge s" style="--i:0"><span class="dot"></span>Available for projects</p>
+   <h1><span class="w"><span style="--d:.1s">Prem</span></span><span class="w"><span style="--d:.25s">Kashyap</span></span></h1>
+   <div class="pills s" style="--i:2"><span>Developer</span><span>Gamer</span><span>Creator</span></div>
+   <p class="lede s" style="--i:3">Known online as NotPremOG. I build and manage Minecraft servers, develop plugins, play PvP and create video content.</p>
+   <div class="cta s" style="--i:4"><a class="btn main" href="#work">Hire me</a><a class="btn" href="#projects">See my projects</a></div>
+   <div class="server s" style="--i:5">
+    <h2>ValoraMC</h2>
+    <p class="status srv-status" data-state="" aria-live="polite">Checking server...</p>
+    <div class="ip"><code>valoramc.mine.bz:25543</code><button class="btn main sm" type="button" data-copy="valoramc.mine.bz:25543">Copy IP</button></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="about" class="rv"><div class="wrap">
+  <h2 class="t">About</h2>
+  <p class="lead">Developer and Minecraft server builder. I focus on servers, plugins, gameplay and content.</p>
+  <div class="grid5">
+   <div class="sp"><h3>Developer</h3><p>Websites and digital projects.</p></div>
+   <div class="sp"><h3>Minecraft servers</h3><p>Server development and management.</p></div>
+   <div class="sp"><h3>Plugins</h3><p>Configuration and custom plugin development.</p></div>
+   <div class="sp"><h3>Gaming and PvP</h3><p>Minecraft gameplay and PvP.</p></div>
+   <div class="sp"><h3>Video and content</h3><p>Video editing and content creation.</p></div>
+  </div>
+ </div></section>
+
+ <section id="experience" class="rv"><div class="wrap">
+  <h2 class="t">Experience</h2>
+  <div class="stats">
+   <div class="sp stat"><strong data-n="2">2+</strong><h3>Years developing</h3><p>Websites, Minecraft systems and server setups.</p></div>
+   <div class="sp stat"><strong data-n="6">6+</strong><h3>Years gaming</h3><p>Mostly Minecraft and multiplayer communities.</p></div>
+   <div class="sp stat"><strong data-n="4">4+</strong><h3>Years editing</h3><p>Video editing and content creation.</p></div>
+  </div>
+ </div></section>
+
+ <section id="skills" class="rv"><div class="wrap">
+  <h2 class="t">Skills</h2>
+  <div class="skills">
+   <div class="sp"><h3>Development</h3><ul class="chips"><li>Minecraft server development</li><li>Server management</li><li>Plugin configuration</li><li>Custom plugin development</li></ul></div>
+   <div class="sp"><h3>Gaming</h3><ul class="chips"><li>Minecraft gaming</li><li>Minecraft PvP</li></ul></div>
+   <div class="sp"><h3>Content creation</h3><ul class="chips"><li>Video editing</li><li>Content creation</li></ul></div>
+  </div>
+ </div></section>
+
+ <section id="projects" class="rv"><div class="wrap">
+  <h2 class="t">Projects</h2>
+  <div class="projects">
+   <article class="sp pc">
+    <div class="ph"><img class="plogo" src="valora.png" alt="ValoraMC logo" width="72" height="72" loading="lazy" onerror="this.remove()"><div><h3>ValoraMC</h3><p class="by">Developed by NotPremOG</p></div></div>
+    <p class="status srv-status" data-state="">Checking server...</p>
+    <ul class="chips"><li>Minecraft economy server</li><li>Java</li><li>Bedrock</li></ul>
+    <p class="muted">A public economy server with voice chat and an active player economy.</p>
+    <dl class="meta"><div><dt>My contribution</dt><dd>Developer</dd></div><div><dt>Server IP</dt><dd><code>valoramc.mine.bz:25543</code></dd></div></dl>
+    <button class="btn main sm" type="button" data-copy="valoramc.mine.bz:25543">Copy IP</button>
+   </article>
+   <article class="sp pc">
+    <div class="ph"><img class="plogo" src="vampire.jpg" alt="VampireMC logo" width="72" height="72" loading="lazy" onerror="this.remove()"><div><h3>VampireMC</h3><p class="by">Developed by NotPremOG</p></div></div>
+    <ul class="chips"><li>Minecraft server</li><li>Bedrock</li></ul>
+    <p class="muted">A Minecraft server. Bedrock players join with the IP and port below.</p>
+    <dl class="meta"><div><dt>My contribution</dt><dd>Developer</dd></div><div><dt>Server IP</dt><dd><code>play.vampiremc.online</code></dd></div><div><dt>Bedrock port</dt><dd><code>25547</code></dd></div></dl>
+    <div class="btns"><button class="btn main sm" type="button" data-copy="play.vampiremc.online">Copy IP</button><button class="btn sm" type="button" data-copy="25547">Copy port</button></div>
+   </article>
+  </div>
+ </div></section>
+
+ <section id="work" class="rv"><div class="wrap">
+  <h2 class="t">Work with me</h2>
+  <div class="work">
+   <div>
+    <p>I take paid projects. Tell me what you need and your budget, and I'll reply by email.</p>
+    <ul class="list" style="margin-top:22px">
+     <li>Website development</li><li>Video editing</li><li>Minecraft projects</li><li>Server management</li><li>Plugin work</li>
+    </ul>
+   </div>
+   <form id="projectForm" action="https://formspree.io/f/xrpezrod" method="POST">
+    <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+    <label>Your email<input type="email" name="email" autocomplete="email" required></label>
+    <label>Project type
+     <select name="project_type" required>
+      <option value="">Select a type</option><option>Website Development</option><option>Video Editing</option><option>Minecraft Project</option><option>Server Management</option><option>Plugin Work</option><option>Other</option>
+     </select>
+    </label>
+    <label>Budget (optional)<input type="text" name="budget"></label>
+    <label>About your project<textarea name="message" required></textarea></label>
+    <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn main" type="submit">Send project request</button>
+    <p id="formStatus" role="status" aria-live="polite"></p>
+   </form>
+  </div>
+ </div></section>
+
+ <section id="reviews" class="rv"><div class="wrap">
+  <h2 class="t">Reviews</h2>
+  <div id="reviewList" class="rgrid"></div>
+  <div id="reviewEmpty" class="sp empty">
+   <h3>No reviews yet</h3>
+   <p class="muted">Worked with me or played on my servers? Send your feedback and it can be featured here.</p>
+   <a class="btn main" href="mailto:premkashyap7678@gmail.com?subject=Review%20for%20Prem%20Kashyap">Leave a review</a>
+  </div>
+ </div></section>
+
+ <section id="contact" class="rv"><div class="wrap">
+  <h2 class="t">Contact</h2>
+  <a class="btn discord" href="https://discord.gg/sRtmTDJ4Q2" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg><span>Join my Discord</span></a>
+  <ul class="contact">
+   <li><span>Email</span><a href="mailto:premkashyap7678@gmail.com">premkashyap7678@gmail.com</a></li>
+   <li><span>Instagram</span><a href="https://instagram.com/premkashyapog" target="_blank" rel="noopener noreferrer">@premkashyapog</a></li>
+   <li><span>YouTube</span><a href="https://youtube.com/@notpremog" target="_blank" rel="noopener noreferrer">@notpremog</a></li>
+   <li><span>Discord username</span><div class="row"><span class="val" style="color:var(--text)">NotPremOG</span><button class="ib" type="button" data-copy="NotPremOG">Copy</button></div></li>
+  </ul>
+ </div></section>
+</main>
+
+<button class="ib top" id="backTop" type="button" aria-label="Back to top">Top</button>
+<footer><div class="wrap">&copy; 2026 Prem Kashyap (NotPremOG). Designed and built by me.</div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+document.documentElement.classList.add('js');
+const header=$('#top'),menuBtn=$('#menuBtn'),backTop=$('#backTop');
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* mobile menu */
+const setMenu=o=>{header.classList.toggle('open',o);menuBtn.setAttribute('aria-expanded',o)};
+menuBtn.addEventListener('click',()=>setMenu(!header.classList.contains('open')));
+$$('#links a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+document.addEventListener('click',e=>{if(!header.contains(e.target))setMenu(false)});
+addEventListener('scroll',()=>backTop.classList.toggle('show',scrollY>500),{passive:true});
+backTop.addEventListener('click',()=>scrollTo({top:0}));
+
+/* reveal, active nav, count-up */
+const links=$$('#links a');
+const count=el=>{const n=+el.dataset.n;if(still){el.textContent=n+'+';return}let t0;const f=t=>{t0??=t;const p=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+'+';if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)};
+if('IntersectionObserver' in window){
+ const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.1});
+ $$('.rv').forEach(s=>ro.observe(s));
+ const ao=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55%'});
+ $$('main section[id]').forEach(s=>ao.observe(s));
+ const co=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){count(e.target);co.unobserve(e.target)}}),{threshold:.6});
+ $$('[data-n]').forEach(x=>co.observe(x));
+}else $$('.rv').forEach(s=>s.classList.add('in'));
+
+/* reviews: add REAL reviews here, e.g. {name:'Name',text:'Review text',avatar:'avatar.png'} */
+const REVIEWS=[];
+if(REVIEWS.length){$('#reviewEmpty').hidden=true;REVIEWS.forEach(r=>{const a=document.createElement('article');a.className='sp rev';const h=document.createElement('div');h.className='rh';if(r.avatar){const i=new Image();i.className='av';i.alt='';i.src=r.avatar;h.append(i)}const n=document.createElement('strong');n.textContent=r.name;h.append(n);const p=document.createElement('p');p.className='muted';p.textContent=r.text;a.append(h,p);$('#reviewList').append(a)})}
+
+/* floating green particles */
+if(!still){const bg=$('.bg');for(let i=0;i<18;i++){const p=document.createElement('i');p.className='pt';const z=2+Math.random()*3;p.style.cssText=`left:${Math.random()*100}%;width:${z}px;height:${z}px;animation-duration:${14+Math.random()*16}s;animation-delay:-${Math.random()*20}s`;bg.append(p)}}
+
+/* cursor spotlight on cards */
+$$('.sp').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}));
+
+/* copy buttons */
+$$('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
+ const t=b.dataset.copy,old=b.textContent;
+ try{await navigator.clipboard.writeText(t)}catch{const i=document.createElement('textarea');i.value=t;document.body.appendChild(i);i.select();document.execCommand('copy');i.remove()}
+ b.textContent='Copied!';setTimeout(()=>b.textContent=old,1500);
+}));
+
+/* music toggle: reflects real audio state; starts only on a tap (autoplay is blocked by browsers) */
+const bgm=$('#bgm'),mb=$('#music'),ml=$('#musicLabel');
+const sync=()=>{const on=!bgm.paused;mb.setAttribute('aria-pressed',on);mb.classList.toggle('playing',on);ml.textContent=on?'Music: playing':'Music: paused'};
+mb.hidden=false;sync();
+['play','pause','ended'].forEach(ev=>bgm.addEventListener(ev,sync));
+bgm.addEventListener('error',()=>{mb.hidden=true});
+mb.addEventListener('click',()=>{if(bgm.paused){bgm.volume=.4;bgm.play().catch(()=>{ml.textContent='Tap again to play'})}else bgm.pause()});
+
+/* live Minecraft server status (real data, not hardcoded) */
+(async()=>{
+ const els=$$('.srv-status'),set=(t,s)=>els.forEach(e=>{e.textContent=t;e.dataset.state=s});
+ try{
+  const c=new AbortController(),t=setTimeout(()=>c.abort(),7000);
+  const r=await fetch('https://api.mcsrvstat.us/3/valoramc.mine.bz:25543',{signal:c.signal});clearTimeout(t);
+  const d=await r.json();
+  if(d.online)set(`Online now, ${d.players?.online??0}/${d.players?.max??'?'} players`,'on');
+  else set('Offline right now','off');
+ }catch{set('Join now with the IP','na')}
+})();
+
+/* project form */
+const form=$('#projectForm'),st=$('#formStatus');
+form.addEventListener('submit',async e=>{
+ e.preventDefault();
+ const b=form.querySelector('button[type=submit]');b.disabled=true;st.style.color='';st.textContent='Sending...';
+ try{
+  const r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+  if(!r.ok)throw 0;
+  form.reset();st.textContent='Request sent. I will reply to your email soon.';
+ }catch{st.style.color='#f0a08f';st.textContent='Could not send. Please email premkashyap7678@gmail.com instead.'}
+ b.disabled=false;
+});
+})();
+</script>
+</body>
+</html>
